@@ -40,6 +40,16 @@
                         <div class="py-2 fst-italic">Tipo:
                             {{ $project->type ? $project->type->name : 'Nessuna tipologia' }}
                         </div>
+
+                        <div class="mb-2">
+                            <span>Tecnologie:</span>
+                            @forelse ($project->technologies as $technology)
+                                #{{ $technology->name }}
+                            @empty
+                                Il progetto non ha tecnologie assegnate.
+                            @endforelse
+                        </div>
+
                         <div class="card-text"> Data Inizio: {{ $project['start_date'] }}</div>
                         <div class="card-text"> Data Fine: {{ $project['end_date'] }}</div>
                         <div class="card-text py-2"> Descrizione: {{ $project['description'] }}</div>

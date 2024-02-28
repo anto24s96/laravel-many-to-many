@@ -47,6 +47,20 @@
                             @enderror
                         </div>
 
+                        <div class="form-group mb-3">
+                            <label class="control-label">Select technology</label>
+                            <div>
+                                @foreach ($technologies as $technology)
+                                    <div class="form-check-inline">
+                                        <input type="checkbox" name="technologies[]" id="technology-{{ $technology->id }}"
+                                            class="form-check-input" value="{{ $technology->id }}"
+                                            @checked(is_array(old('technologies')) && in_array($technology->id, old('technologies')))>
+                                        <label for="technologies" class="form-check-label">{{ $technology->name }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
                         <div class="mb-3">
                             <label for="description" class="form-label">Description:</label>
                             <textarea class="form-control @error('description') is-invalid @enderror" id="textarea-description" rows="10"
